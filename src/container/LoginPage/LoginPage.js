@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {LoginForm, SocialLogin, WrapperLoginPage} from "./styles";
-import {ACCESS_TOKEN, FACEBOOK_AUTH_URL, GOOGLE_AUTH_URL} from "../../const/constant";
+import {ACCESS_TOKEN, EMAIL, FACEBOOK_AUTH_URL, GOOGLE_AUTH_URL} from "../../const/constant";
 import fbLogo from '../../img/fb-logo.png';
 import googleLogo from '../../img/google-logo.png';
 import {callApi, METHODS} from "../../utils/requestUtils";
@@ -32,15 +32,17 @@ class LoginPage extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const {email, password} = this.state;
     let payload = {
-      email: this.state.email,
-      password: this.state.password,
+      email,
+      password,
     };
     callApi(API_ROUTES.LOGIN, METHODS.POST, payload)
       .then(res => {
           console.log('res', res);
           localStorage.setItem(ACCESS_TOKEN, res.data.accessToken);
-          this.props.history.push("/");
+          localStorage.setItem(EMAIL, email);
+          this.props.history.push("/chat");
           Alert.success("You're successfully logged in!");
 
         }

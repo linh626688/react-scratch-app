@@ -5,12 +5,10 @@ export const METHODS = {
   POST: 'POST',
   PUT: 'PUT',
   DELETE: 'DELETE',
-}
+};
 
 export function callApi(url, method, data = {}) {
-  const headers = {
-    // [BROWSER_ID]: browserId
-  };
+  const headers = {};
   return axios({
     method,
     url,

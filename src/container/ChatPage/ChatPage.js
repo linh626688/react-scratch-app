@@ -3,7 +3,8 @@ import HeaderChat from "../../component/HeaderChat/HeaderChat";
 import {Main} from "./styles";
 import MemberList from "../../component/MemberList/MemberList";
 import ChatField from "../../component/ChatField/ChatField";
-import ChatixSDK from "../../component/ChatixSDK";
+import ChatixSDK from "../../component/Chatix/ChatixSDK";
+import {EMAIL} from "../../const/constant";
 
 
 class ChatPage extends Component {
@@ -14,7 +15,7 @@ class ChatPage extends Component {
       chatroomName: '',
       me: {
         is_online: true,
-        name: "Alex",
+        name: localStorage.getItem(EMAIL),
         uuid: "98s7dfh9a8s7dhf"
       },
       members: [],
